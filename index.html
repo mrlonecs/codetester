@@ -15,18 +15,51 @@
           <p class="eyebrow">PyStudio</p>
           <h1>Browser Python IDE</h1>
           <p class="lede">
-            Write Python in the browser, run it with one click, and inspect the output in a
-            terminal-style console without leaving the page.
+            A full-screen Python workspace with a Monaco editor, browser-based execution,
+            keyboard shortcuts, and a terminal-style output console.
           </p>
         </div>
 
         <section class="panel">
+          <h2>Editor controls</h2>
+          <label>
+            Theme
+            <select id="theme-select">
+              <option value="vs-dark">Midnight</option>
+              <option value="vs">Light+</option>
+              <option value="hc-black">High Contrast</option>
+            </select>
+          </label>
+          <label>
+            Font size
+            <input id="font-size" type="range" min="12" max="24" value="15" />
+          </label>
+          <label class="checkbox-row">
+            <input id="word-wrap" type="checkbox" checked />
+            Word wrap
+          </label>
+          <div class="stat-grid">
+            <div><strong id="line-count">0</strong><span>Lines</span></div>
+            <div><strong id="char-count">0</strong><span>Chars</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Quick starts</h2>
+          <div class="snippet-list">
+            <button class="secondary snippet-btn" data-snippet="dataclass">Data class</button>
+            <button class="secondary snippet-btn" data-snippet="algorithm">Algorithm demo</button>
+            <button class="secondary snippet-btn" data-snippet="json">JSON formatter</button>
+          </div>
+        </section>
+
+        <section class="panel">
           <h2>Included IDE features</h2>
           <ul>
-            <li>Python-focused editing with syntax highlighting, line numbers, and active-line feedback.</li>
-            <li>Dedicated run, reset, and clear terminal actions plus <code>Ctrl/Cmd + Enter</code>.</li>
-            <li>Execution inside a worker-backed Pyodide runtime to keep the UI responsive.</li>
-            <li>Terminal output with timestamps, completion notices, and colored errors.</li>
+            <li>Monaco editing with syntax highlighting, minimap, find, and line numbers.</li>
+            <li>Run, clear, reset, and keyboard shortcut support (<code>Ctrl/Cmd + Enter</code>).</li>
+            <li>Execution in a dedicated worker via Pyodide so the UI stays responsive.</li>
+            <li>Terminal output with colored stdout/stderr, timestamps, and completion notices.</li>
           </ul>
         </section>
       </aside>
@@ -35,11 +68,7 @@
         <section class="toolbar">
           <div>
             <h2>main.py</h2>
-            <p id="status-text">Initializing editor…</p>
-          </div>
-          <div class="toolbar-meta">
-            <span id="line-count">0 lines</span>
-            <span id="char-count">0 chars</span>
+            <p id="status-text">Loading editor assets…</p>
           </div>
           <div class="toolbar-actions">
             <button id="reset-btn" class="secondary">Reset demo</button>
@@ -64,8 +93,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/xterm@5.5.0/lib/xterm.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.10.0/lib/xterm-addon-fit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ext-language_tools.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
